@@ -19,7 +19,12 @@
             Yusuf Yeşildal Kerestecilik
         </a>
     </div>
-    <nav>
+
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <nav id="main-nav">
         <ul>
             <li><a href="index.html">Ana Sayfa</a></li>
             <li><a href="services.html">Hizmetlerimiz</a></li>
@@ -29,6 +34,7 @@
         </ul>
     </nav>
 </header>
+
 
     <main>
         <section id="hero">
@@ -98,6 +104,29 @@
             <a href="#"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
         </div>
     </footer>
+
+    <script>
+        // JavaScript for Hamburger Menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu');
+            const mainNav = document.getElementById('main-nav');
+
+            if (mobileMenuButton && mainNav) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    // Change icon based on menu state
+                    const icon = mobileMenuButton.querySelector('i');
+                    if (mainNav.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times'); // 'x' icon
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars'); // Hamburger icon
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>

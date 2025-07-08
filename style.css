@@ -22,7 +22,6 @@ img {
     width: 90%;
     max-width: 1200px;
     margin: auto;
-    /* overflow: hidden;  Bu ayar, mobil menüde taşma veya hamburger menüde sorun çıkarabilir, bu yüzden burada yorum satırına alındı. */
     padding: 0 15px;
 }
 
@@ -47,6 +46,7 @@ header {
     display: flex; /* Flexbox'ı etkinleştir */
     justify-content: space-between; /* Logo ve nav'ı zıt uçlara yasla */
     align-items: center; /* Dikey olarak ortala */
+    position: relative; /* Mobil menünün header'a göre konumlanması için */
 }
 
 /* Navigasyon menüsündeki logo ve metin birleşimi */
@@ -104,9 +104,16 @@ nav ul li a:hover {
     border-bottom: 2px solid #8BC34A;
 }
 
+/* Hamburger Menü Butonu */
+.menu-toggle {
+    display: none; /* Masaüstünde gizli */
+    font-size: 2rem;
+    cursor: pointer;
+    color: #fff;
+}
+
 /* Hero Bölümü */
 #hero {
-    /* background: url('images/herooo.png') no-repeat center center/cover; /* BU SATIRI SİLİNDİ */
     height: 70vh; /* Masaüstü için varsayılan yükseklik */
     display: flex;
     flex-direction: column;
@@ -526,7 +533,6 @@ footer .social-links img:hover {
     /* Hero Bölümü Ayarlamaları */
     #hero {
         height: 50vh; /* Tabletler için hero yüksekliğini azalt */
-        /* background-position: center top; /* Resmin üst kısmını daha fazla göster */ 
     }
     #hero h1 {
         font-size: 2.8rem; /* Tabletler için başlığı ayarla */
@@ -534,34 +540,58 @@ footer .social-links img:hover {
     #hero p {
         font-size: 1.4rem; /* Tabletler için paragrafı ayarla */
     }
+    
 
     /* Navigasyon Menüsü Ayarlamaları */
     header {
-        flex-direction: row; /* Yatay sıralama */
-        justify-content: space-between; /* Logo sola, nav sağa */
-        align-items: center; /* Dikey ortalama */
+        flex-wrap: wrap; /* Küçük ekranlarda elemanların sarmasını sağlar */
         padding: 10px 15px;
+        position: relative; /* Header'a relative position kalsın */
     }
-    header .logo a {
-        font-size: 1.7rem;    /* Logo metnini biraz küçült */
-        padding-left: 0;      /* Sol padding kaldırıldı */
-        margin-bottom: 0;      /* Alt boşluk kaldırıldı */
-        justify-content: flex-start; /* Sol başlangıca hizala */
+
+    .menu-toggle {
+        display: block; /* Hamburger menüyü göster */
     }
-    .header-logo {
-        height: 45px;          /* Logo görselini küçült */
+
+    nav {
+        order: 1; /* Navigasyon öğesini başlığın altına al */
+        flex-basis: 100%; /* Tam genişlik kaplamasını sağla */
+        
+        max-height: 0; /* Varsayılan olarak menüyü gizle (yüksekliği sıfırla) */
+        overflow: hidden; /* Taşmayı gizle */
+        transition: max-height 0.5s ease-out; /* Yumuşak geçiş efekti */
+        background-color: #5D4037; /* Mobil menü arkaplan rengi (header ile aynı) */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Hafif bir gölge ekle */
+        margin-top: 10px; /* Hamburger menü ile menü arasında hafif boşluk */
     }
+
+    nav.active {
+        max-height: 500px; /* Aktif olduğunda menüyü göster (yeterince büyük bir değer olmalı) */
+    }
+
     nav ul {
         flex-direction: column; /* Menü öğelerini alt alta sırala */
-        width: 200%;           /* Tam genişlik */
-        text-align: right;     /* Sağdan hizala */
-        margin-top: 0;         /* Üst boşluğu kaldırıldı */
-        gap: 15px; /* Mobil görünümde dikey boşluğu ayarla */
-        align-items: flex-end; /* Mobil menü elemanlarını da sağa yaslar */
+        width: 100%; /* Tam genişlik */
+        gap: 0; /* Mobil görünümde dikey boşluğu kaldır (li'lere padding vereceğiz) */
+        align-items: center; /* Mobil menü elemanlarını ortala */
+        padding: 10px 0; /* Üst ve alttan padding ekle */
     }
     nav ul li {
-        margin: 0; /* Mobil görünümde boşlukları sıfırla, gap kullanılıyor */
+        width: 100%; /* Her bir liste öğesinin tam genişlik kaplamasını sağla */
+        text-align: center; /* Metni ortala */
     }
+    nav ul li a {
+        padding: 12px 0; /* Mobil menü öğelerinin tıklanabilir alanını artır */
+        border-bottom: none; /* Mobil menüde alt çizgiyi kaldır */
+        color: #fff; /* Mobil menüdeki link rengi */
+        display: block; /* Tıklanabilir alanı genişlet */
+    }
+    nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.1); /* Hover durumunda hafif arka plan */
+        border-bottom: none; /* Mobil menüde hover alt çizgisini kaldır */
+        color: #8BC34A; /* Hover rengi */
+    }
+    
     /* Kart Düzenleri (Tüm sayfalar için geçerli) */
     #featured-services .service-cards,
     #our-difference .difference-points,
@@ -579,7 +609,7 @@ footer .social-links img:hover {
     #about-content .team-member-card,
     .contact-info .info-item,
     .gallery-item {
-        width: 90%;           /* Kapsayıcının %90'ını kapla */
+        width: 90%;            /* Kapsayıcının %90'ını kapla */
         max-width: 480px;      /* Maksimum genişlik belirle */
         margin-left: auto;     /* Ortalamak için */
         margin-right: auto;    /* Ortalamak için */
@@ -605,7 +635,6 @@ footer .social-links img:hover {
     #hero {
         height: 40vh; /* Telefonlar için hero yüksekliğini daha da azalt */
         padding: 0 15px; /* Yandan boşluğu azalt */
-        /* background-position: center center; /* Mobil ekranlar için tekrar ortala */ 
     }
     #hero h1 {
         font-size: 2.2rem; /* Telefonlar için hero başlığını daha da küçült */
@@ -618,16 +647,12 @@ footer .social-links img:hover {
 
     /* Navigasyon Menüsü Ayarlamaları */
     header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
         padding: 1rem 15px;
     }
     header .logo a {
         font-size: 1.4rem; /* Telefonlar için logo metnini daha da küçült */
         margin-bottom: 0;
         padding-left: 0; /* Sol padding kaldırıldı */
-        justify-content: flex-start; /* Sol başlangıca hizala */
     }
     .header-logo {
         height: 38px; /* Telefonlar için logo görselini daha da küçült */
@@ -635,11 +660,7 @@ footer .social-links img:hover {
     }
 
     nav ul {
-        gap: 10px; /* Çok küçük ekranlarda daha az boşluk */
-        align-items: flex-end; /* Mobil menü elemanlarını da sağa yaslar */
-    }
-    nav ul li {
-        margin: 0; /* Mobil görünümde boşlukları sıfırla, gap kullanılıyor */
+        gap: 0; /* Mobil görünümde dikey boşluğu kaldır */
     }
 
     /* İletişim İkon Boyutları */
