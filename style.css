@@ -107,17 +107,29 @@ nav ul li a:hover {
 
 /* Hero Bölümü */
 #hero {
-    background: url('images/herooo.png') no-repeat center center/cover; /* Resim yolu ve boyutlandırma */
+    /* background: url('images/herooo.png') no-repeat center center/cover; /* BU SATIRI SİLİN */
     height: 70vh; /* Masaüstü için varsayılan yükseklik */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;;
     align-items: center;
     text-align: center;
     color: #fff;
     padding: 0 20px;
-    position: relative;
+    position: relative; /* İçindeki mutlak konumlandırılmış elemanlar için gereklidir */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Metin okunurluğu için gölge */
+    overflow: hidden; /* Resim dışarı taşarsa gizlemek için */
+}
+
+/* Yeni eklenen hero arka plan görseli için stil */
+.hero-background-image {
+    position: absolute; /* Hero bölümüne göre konumlandır */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Resmi, oranını bozmadan alanı kaplayacak şekilde ölçekle */
+    z-index: 0; /* Metnin ve karartma katmanının arkasında kalmasını sağla */
 }
 
 #hero::before { /* Arka plan resmi üzerine karartma katmanı */
@@ -128,21 +140,25 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
-    z-index: 0; /* İçeriğin altında kalmasını sağlar */
+    z-index: 0; /* HTML'den eklenen resmin üzerinde ama metnin altında kalmasını sağlar */
 }
 
+/* Hero içindeki başlık, paragraf ve butonun z-index'ini yükseltin ki karartma katmanının üzerinde görünsünler */
 #hero h1 {
     font-size: 3.8rem;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     z-index: 1; /* İçeriğin karartma katmanının üstünde olmasını sağlar */
     color: #fff;
-}
-
+} 
 #hero p {
     font-size: 1.6rem;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
     z-index: 1;
-    color: #eee;
+    color: #4CAF50;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+} 
+.button {
+    z-index: 1; 
 }
 
 .button {
