@@ -1,12 +1,20 @@
 /* Genel Stil Ayarları */
 body {
-    font-family: 'Open Sans', sans-serif; /* Daha modern bir font tercih edilebilir, örneğin Google Fonts'tan */
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Tüm elementlerde kutu modelinin doğru çalışmasını sağlar */
     background-color: #f8f8f8; /* Açık ve ferah bir arka plan */
     color: #333; /* Okunabilir koyu metin rengi */
     line-height: 1.7;
+    overflow-x: hidden; /* Yatay kaydırmayı (taşmayı) engeller */
+}
+
+/* Tüm resimlerin duyarlı olmasını sağla */
+img {
+    max-width: 100%;
+    height: auto; /* Resimlerin en boy oranını korur */
+    display: block; /* Bazen altındaki fazladan boşlukları kaldırmak için iyi olabilir */
 }
 
 /* Container için genel düzen */
@@ -14,7 +22,7 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: auto;
-    overflow: hidden;
+    /* overflow: hidden;  Bu ayar, mobil menüde taşma veya hamburger menüde sorun çıkarabilir, bu yüzden burada yorum satırına alındı. */
     padding: 0 15px;
 }
 
@@ -34,25 +42,42 @@ h4 { font-size: 1.4rem; }
 header {
     background: #5D4037; /* Koyu ahşap/kahve tonu */
     color: #fff;
-    padding: 1.2rem 0;
+    padding: 1rem 15px; /* Yanlardan biraz boşluk ekleyelim */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex; /* Flexbox'ı etkinleştir */
+    justify-content: space-between; /* Logo ve nav'ı zıt uçlara yasla */
+    align-items: center; /* Dikey olarak ortala */
 }
 
+/* Navigasyon menüsündeki logo ve metin birleşimi */
 header .logo a {
+    display: flex; /* İkon ve metni yan yana hizalar */
+    align-items: center; /* Dikey olarak ortalar */
     color: #fff;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.5rem; /* Logo metninin varsayılan boyutu */
     font-weight: bold;
-    padding-left: 20px;
+    padding-left: 0; /* Sol padding'i kaldırarak sola yasla */
     letter-spacing: 1px;
+    white-space: nowrap; /* Metnin tek satırda kalmasını sağlar */
+}
+
+/* Header Logo Görseli */
+.header-logo {
+    height: 50px; /* Logoyu daha büyük gösterir */
+    margin-right: 4px; /* Logo ile metin arasına boşluk */
+    vertical-align: middle; /* Metinle dikey hizalama */
+    background-color: #8BC34A; /* Arkaplan rengi eklendi */
+    border-radius: 50%; /* Tamamen yuvarlak yapar */
+    padding: 5px; /* Logoya iç boşluk ekler */
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
+    display: flex; /* Navigasyon öğelerini (ul) yan yana hizalamak için */
+    justify-content: flex-end; /* Navigasyonun kendisini sağa yasla */
     align-items: center;
     max-width: 1200px;
-    margin: 0 auto;
+    flex-wrap: wrap; /* Küçük ekranlarda nav içeriğinin sarılmasını sağlar */
 }
 
 nav ul {
@@ -60,11 +85,11 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
+    flex-wrap: wrap; /* Menü öğelerinin de sarmalamasını sağlar */
+    gap: 30px; /* Menü öğeleri arasına boşluk ekler. */
+    justify-content: flex-end; /* Menü elemanlarını en sağa yaslar */
 }
 
-nav ul li {
-    margin-left: 30px;
-}
 
 nav ul li a {
     color: #fff;
@@ -82,9 +107,8 @@ nav ul li a:hover {
 
 /* Hero Bölümü */
 #hero {
-    /* CSS dosyası ana dizinde olduğu için, images klasörüne doğrudan erişim */
-    background: url('images/herooo.png') no-repeat center center/cover; /* Resim adı hero.png olarak güncellendi */
-    height: 70vh;
+    background: url('images/herooo.png') no-repeat center center/cover; /* Resim yolu ve boyutlandırma */
+    height: 70vh; /* Masaüstü için varsayılan yükseklik */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -96,21 +120,22 @@ nav ul li a:hover {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Metin okunurluğu için gölge */
 }
 
-#hero::before {
+#hero::before { /* Arka plan resmi üzerine karartma katmanı */
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Arka planı biraz karart */
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0; /* İçeriğin altında kalmasını sağlar */
 }
 
 #hero h1 {
     font-size: 3.8rem;
     margin-bottom: 20px;
-    z-index: 1;
-    color: #fff; /* Başlık rengi hero'da beyaz olsun */
+    z-index: 1; /* İçeriğin karartma katmanının üstünde olmasını sağlar */
+    color: #fff;
 }
 
 #hero p {
@@ -183,7 +208,7 @@ section h2::after { /* Başlık altı çizgi */
 #featured-services .card {
     background: #fdfdfd;
     padding: 35px;
-    border-radius: 15px; /* Yumuşak hatlar */
+    border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     flex: 1;
     min-width: 280px;
@@ -199,7 +224,7 @@ section h2::after { /* Başlık altı çizgi */
 }
 
 #featured-services .card h3 {
-    color: #5D4037; /* Kahverengi başlık */
+    color: #5D4037;
     margin-bottom: 15px;
     font-size: 1.7rem;
 }
@@ -211,7 +236,7 @@ section h2::after { /* Başlık altı çizgi */
 
 /* Neden Bizi Tercih Etmelisiniz Bölümü */
 #our-difference {
-    background-color: #EDF7EF; /* Daha açık yeşilimsi bir arka plan */
+    background-color: #EDF7EF;
     padding: 80px 0;
     border-radius: 10px;
 }
@@ -238,7 +263,7 @@ section h2::after { /* Başlık altı çizgi */
 }
 
 #our-difference .point-card h4 {
-    color: #5D4037; /* Kahverengi başlık */
+    color: #5D4037;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -274,7 +299,7 @@ section h2::after { /* Başlık altı çizgi */
 
 #services-list .card img {
     max-width: 100%;
-    height: 200px;
+    height: 200px; /* Sabit yükseklik, object-fit ile resmi uydurur */
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -422,20 +447,40 @@ section h2::after { /* Başlık altı çizgi */
     border: 1px solid #eee;
 }
 
+/* İletişim Sayfası İkonları (Telefon, WhatsApp, E-posta) */
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
 /* Footer */
 footer {
     background: #3E2723; /* Daha koyu kahve */
     color: #f8f8f8;
     text-align: center;
-    padding: 40px 0;
+    padding: 30px 0; /* Üst ve alttan padding'i 40px'ten 30px'e düşürerek küçülttük */
     margin-top: 50px;
     border-top: 5px solid #8BC34A; /* Yeşil çizgi */
+    display: flex; /* İçeriği düzenlemek için flexbox kullan */
+    flex-direction: column; /* Öğeleri alt alta sırala (copyright ve sosyal medya) */
+    align-items: center; /* Yatayda ortala */
+    gap: 15px; /* Öğeler arasında boşluk bırak */
+}
+
+/* Sosyal Medya Linkleri İçin Yeni Düzenleme */
+footer .social-links {
+    display: flex; /* İkonları yan yana hizalamak için flexbox kullan */
+    justify-content: center; /* İkonları yatayda ortala */
+    align-items: center; /* İkonları dikeyde ortala */
+    margin-top: 0; /* Boşluğu kaldır, gap zaten var */
 }
 
 footer .social-links img {
-    width: 35px;
-    height: 35px;
-    margin: 0 12px;
+    width: 30px; /* İkon boyutunu biraz küçülttük (35px'ten 30px'e) */
+    height: 30px; /* İkon boyutunu biraz küçülttük */
+    margin: 0 10px; /* İkonlar arası boşluğu biraz azalttık (12px'ten 10px'e) */
     filter: invert(100%); /* İkonları beyaza çevir */
     transition: transform 0.3s ease;
 }
@@ -444,74 +489,178 @@ footer .social-links img:hover {
     transform: scale(1.15);
 }
 
-/* Duyarlılık (Responsive) */
-@media (max-width: 992px) {
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.8rem; }
-    #hero p { font-size: 1.3rem; }
 
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0 15px;
+/* Duyarlılık (Responsive Tasarım) */
+
+/* 992px ve altındaki ekranlar (Tabletler ve büyük telefonlar) */
+@media (max-width: 992px) {
+    /* Başlık boyutları */
+    h1 { font-size: 2.5rem; margin-bottom: 15px; }
+    h2 { font-size: 2rem; margin-bottom: 30px; }
+    h3 { font-size: 1.6rem; }
+    h4 { font-size: 1.3rem; }
+    
+    /* Genel bölüm padding'i */
+    section { padding: 60px 0; margin-bottom: 15px; }
+
+    /* Hero Bölümü Ayarlamaları */
+    #hero {
+        height: 50vh; /* Tabletler için hero yüksekliğini azalt */
+        background-position: center top; /* Resmin üst kısmını daha fazla göster */
+    }
+    #hero h1 {
+        font-size: 2.8rem; /* Tabletler için başlığı ayarla */
+    }
+    #hero p {
+        font-size: 1.4rem; /* Tabletler için paragrafı ayarla */
+    }
+
+    /* Navigasyon Menüsü Ayarlamaları */
+    header {
+        flex-direction: row; /* Yatay sıralama */
+        justify-content: space-between; /* Logo sola, nav sağa */
+        align-items: center; /* Dikey ortalama */
+        padding: 10px 15px;
+    }
+    header .logo a {
+        font-size: 1.7rem;     /* Logo metnini biraz küçült */
+        padding-left: 0;       /* Sol padding kaldırıldı */
+        margin-bottom: 0;      /* Alt boşluk kaldırıldı */
+        justify-content: flex-start; /* Sol başlangıca hizala */
+    }
+    .header-logo {
+        height: 45px;          /* Logo görselini küçült */
+    }
+    nav ul {
+        flex-direction: column; /* Menü öğelerini alt alta sırala */
+        width: 200%;           /* Tam genişlik */
+        text-align: right;    /* Sağdan hizala */
+        margin-top: 0;         /* Üst boşluğu kaldırıldı */
+        gap: 15px; /* Mobil görünümde dikey boşluğu ayarla */
+        align-items: flex-end; /* Mobil menü elemanlarını da sağa yaslar */
+    }
+    nav ul li {
+        margin: 0; /* Mobil görünümde boşlukları sıfırla, gap kullanılıyor */
+    }
+    /* Kart Düzenleri (Tüm sayfalar için geçerli) */
+    #featured-services .service-cards,
+    #our-difference .difference-points,
+    #services-list .service-detail-cards,
+    #about-content .team-members,
+    #contact-content .contact-info,
+    #gallery-content .image-grid {
+        flex-direction: column; /* Tüm kartları alt alta sırala */
+        gap: 25px;             /* Kartlar arası boşluğu ayarla */
+    }
+    /* Tüm kartların genel genişliği */
+    #featured-services .card,
+    #our-difference .point-card,
+    #services-list .card,
+    #about-content .team-member-card,
+    .contact-info .info-item,
+    .gallery-item {
+        width: 90%;          /* Kapsayıcının %90'ını kapla */
+        max-width: 480px;    /* Maksimum genişlik belirle */
+        margin-left: auto;   /* Ortalamak için */
+        margin-right: auto;  /* Ortalamak için */
+    }
+    .map-placeholder {
+        height: 400px; /* Harita yüksekliğini azalt */
+    }
+}
+
+/* 576px ve altındaki ekranlar (Telefonlar) */
+@media (max-width: 576px) {
+    /* Başlık boyutları */
+    h1 { font-size: 2rem; margin-bottom: 10px; }
+    h2 { font-size: 1.7rem; margin-bottom: 25px; }
+    h3 { font-size: 1.4rem; }
+    h4 { font-size: 1.2rem; }
+    p { font-size: 0.95rem; } /* Genel paragraf metinlerini küçült */
+    
+    /* Genel bölüm padding'i */
+    section { padding: 40px 0; margin-bottom: 10px; }
+
+    /* Hero Bölümü Ayarlamaları */
+    #hero {
+        height: 40vh; /* Telefonlar için hero yüksekliğini daha da azalt */
+        padding: 0 15px; /* Yandan boşluğu azalt */
+        background-position: center center; /* Mobil ekranlar için tekrar ortala */
+    }
+    #hero h1 {
+        font-size: 2.2rem; /* Telefonlar için hero başlığını daha da küçült */
+    }
+    #hero p {
+        font-size: 1.1rem; /* Telefonlar için hero paragrafını daha da küçült */
+        margin-bottom: 25px;
+    }
+    .button { padding: 10px 20px; font-size: 0.95rem; }
+
+    /* Navigasyon Menüsü Ayarlamaları */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 15px;
+    }
+    header .logo a {
+        font-size: 1.4rem; /* Telefonlar için logo metnini daha da küçült */
+        margin-bottom: 0;
+        padding-left: 0; /* Sol padding kaldırıldı */
+        justify-content: flex-start; /* Sol başlangıca hizala */
+    }
+    .header-logo {
+        height: 38px; /* Telefonlar için logo görselini daha da küçült */
+        padding: 4px;
     }
 
     nav ul {
-        margin-top: 15px;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
+        gap: 10px; /* Çok küçük ekranlarda daha az boşluk */
+        align-items: flex-end; /* Mobil menü elemanlarını da sağa yaslar */
     }
-
     nav ul li {
-        margin: 10px 0;
+        margin: 0; /* Mobil görünümde boşlukları sıfırla, gap kullanılıyor */
     }
 
-    .service-cards, .difference-points {
-        flex-direction: column;
-        align-items: center;
+    /* İletişim İkon Boyutları */
+    .contact-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 6px;
+    }
+    .contact-info .info-item h3 {
+        font-size: 1.4rem;
+    }
+    .contact-info .info-item p {
+        font-size: 1rem;
     }
 
-    #featured-services .card,
-    #our-difference .point-card {
-        max-width: 90%; /* Daha geniş alana yayılma */
+    .map-placeholder {
+        height: 300px; /* Harita yüksekliğini daha da azalt */
+    }
+
+    footer {
+        padding: 25px 0; /* Mobil cihazlarda daha da küçült */
+        margin-top: 25px;
+        gap: 10px;
+    }
+    footer .social-links img {
+        width: 25px; /* Mobil ikon boyutunu daha da küçült */
+        height: 25px;
+        margin: 0 6px; /* Mobil ikonlar arası boşluğu azalt */
     }
 }
 
-@media (max-width: 576px) {
+/* 360px ve altındaki ekranlar (Çok küçük telefonlar) */
+@media (max-width: 360px) {
     h1 { font-size: 1.8rem; }
-    #hero p { font-size: 1.1rem; }
-    .button { padding: 12px 25px; font-size: 1rem; }
-    section { padding: 40px 0; }
-    header .logo a { font-size: 1.5rem; }
-}
+    h2 { font-size: 1.4rem; }
+    #hero h1 { font-size: 1.8rem; }
+    #hero p { font-size: 0.9rem; }
+    .button { padding: 8px 18px; font-size: 0.85rem; }
 
-/* İletişim Sayfası İkonları */
-.contact-icon {
-    width: 24px; /* İkon genişliği */
-    height: 24px; /* İkon yüksekliği */
-    vertical-align: middle; /* Metinle dikey hizalama */
-    margin-right: 8px; /* İkon ve metin arasına boşluk */
-}
+    header .logo a { font-size: 1.2rem; }
+    .header-logo { height: 32px; }
 
-/* Header Logo Görseli */
-.header-logo {
-    height: 50px; /* Logonuza göre bu değeri ayarlayabilirsiniz */
-    margin-right: 4px; /* Logo ile metin arasına boşluk */
-    vertical-align: middle; /* Metinle dikey hizalama */
-    background-color: #8BC34A;
-    border-radius: 50px;
-    padding-bottom: 8px;
-}
-
-/* Navigasyon menüsündeki logo kısmını daha iyi hizalamak için */
-header .logo a {
-    display: flex; /* İkon ve metni yan yana hizalar */
-    align-items: center; /* Dikey olarak ortalar */
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding-left: 20px;
-    letter-spacing: 1px;
+    nav ul li a { font-size: 0.9rem; }
 }
