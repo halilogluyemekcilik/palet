@@ -90,7 +90,6 @@ nav ul {
     justify-content: flex-end; /* Menü elemanlarını en sağa yaslar */
 }
 
-
 nav ul li a {
     color: #fff;
     text-decoration: none;
@@ -107,11 +106,11 @@ nav ul li a:hover {
 
 /* Hero Bölümü */
 #hero {
-    /* background: url('images/herooo.png') no-repeat center center/cover; /* BU SATIRI SİLİN */
+    /* background: url('images/herooo.png') no-repeat center center/cover; /* BU SATIRI SİLİNDİ */
     height: 70vh; /* Masaüstü için varsayılan yükseklik */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;;
+    justify-content: flex-start; /* İçeriği dikeyde yukarı yasla */
     align-items: center;
     text-align: center;
     color: #fff;
@@ -346,7 +345,7 @@ section h2::after { /* Başlık altı çizgi */
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    text-align: center; /* Metinleri ortala */
     flex: 1;
     min-width: 250px;
     max-width: 300px;
@@ -360,6 +359,9 @@ section h2::after { /* Başlık altı çizgi */
     object-fit: cover;
     margin-bottom: 15px;
     border: 3px solid #8BC34A;
+    display: block; /* Blok seviyesinde yap */
+    margin-left: auto; /* Yatayda ortala */
+    margin-right: auto; /* Yatayda ortala */
 }
 
 #about-content .team-member-card h4 {
@@ -433,6 +435,9 @@ section h2::after { /* Başlık altı çizgi */
     color: #5D4037;
     margin-bottom: 10px;
     font-size: 1.6rem;
+    display: flex; /* İkon ve metni Flexbox ile hizala */
+    align-items: center; /* Dikeyde ortala */
+    justify-content: center; /* Yatayda ortala */
 }
 
 .contact-info .info-item p {
@@ -505,7 +510,6 @@ footer .social-links img:hover {
     transform: scale(1.15);
 }
 
-
 /* Duyarlılık (Responsive Tasarım) */
 
 /* 992px ve altındaki ekranlar (Tabletler ve büyük telefonlar) */
@@ -522,7 +526,7 @@ footer .social-links img:hover {
     /* Hero Bölümü Ayarlamaları */
     #hero {
         height: 50vh; /* Tabletler için hero yüksekliğini azalt */
-        background-position: center top; /* Resmin üst kısmını daha fazla göster */
+        /* background-position: center top; /* Resmin üst kısmını daha fazla göster */ 
     }
     #hero h1 {
         font-size: 2.8rem; /* Tabletler için başlığı ayarla */
@@ -539,8 +543,8 @@ footer .social-links img:hover {
         padding: 10px 15px;
     }
     header .logo a {
-        font-size: 1.7rem;     /* Logo metnini biraz küçült */
-        padding-left: 0;       /* Sol padding kaldırıldı */
+        font-size: 1.7rem;    /* Logo metnini biraz küçült */
+        padding-left: 0;      /* Sol padding kaldırıldı */
         margin-bottom: 0;      /* Alt boşluk kaldırıldı */
         justify-content: flex-start; /* Sol başlangıca hizala */
     }
@@ -550,7 +554,7 @@ footer .social-links img:hover {
     nav ul {
         flex-direction: column; /* Menü öğelerini alt alta sırala */
         width: 200%;           /* Tam genişlik */
-        text-align: right;    /* Sağdan hizala */
+        text-align: right;     /* Sağdan hizala */
         margin-top: 0;         /* Üst boşluğu kaldırıldı */
         gap: 15px; /* Mobil görünümde dikey boşluğu ayarla */
         align-items: flex-end; /* Mobil menü elemanlarını da sağa yaslar */
@@ -575,10 +579,10 @@ footer .social-links img:hover {
     #about-content .team-member-card,
     .contact-info .info-item,
     .gallery-item {
-        width: 90%;          /* Kapsayıcının %90'ını kapla */
-        max-width: 480px;    /* Maksimum genişlik belirle */
-        margin-left: auto;   /* Ortalamak için */
-        margin-right: auto;  /* Ortalamak için */
+        width: 90%;           /* Kapsayıcının %90'ını kapla */
+        max-width: 480px;      /* Maksimum genişlik belirle */
+        margin-left: auto;     /* Ortalamak için */
+        margin-right: auto;    /* Ortalamak için */
     }
     .map-placeholder {
         height: 400px; /* Harita yüksekliğini azalt */
@@ -601,7 +605,7 @@ footer .social-links img:hover {
     #hero {
         height: 40vh; /* Telefonlar için hero yüksekliğini daha da azalt */
         padding: 0 15px; /* Yandan boşluğu azalt */
-        background-position: center center; /* Mobil ekranlar için tekrar ortala */
+        /* background-position: center center; /* Mobil ekranlar için tekrar ortala */ 
     }
     #hero h1 {
         font-size: 2.2rem; /* Telefonlar için hero başlığını daha da küçült */
