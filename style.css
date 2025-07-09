@@ -154,15 +154,16 @@ nav ul li a:hover {
     font-size: 3.8rem;
     margin-bottom: 0px;
     margin-top: 20px;
+    color: #4CAF50; /*#8BC34A*/
     z-index: 1; /* İçeriğin karartma katmanının üstünde olmasını sağlar */
     color: #fff;
 } 
 #hero p {
-    font-size: 1.9rem;
-    margin-bottom: 60px;
+    font-size: 2.1rem;
+    margin-bottom: 50px;
     z-index: 1;
-    color: #4CAF50;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    color: #4CAF50; /*#8BC34A*/
+    text-shadow: 10px 10px 10px rgba(255, 255, 255, 1);
     font-weight: 700;
 } 
 #hero .button {
@@ -177,7 +178,6 @@ nav ul li a:hover {
     font-size: 1.1rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    margin-top: 11%;
 
 }
 .button {
@@ -222,6 +222,9 @@ section h2 {
     position: relative;
     padding-bottom: 15px;
 }
+section .button {
+    margin-top: 20px;
+}
 
 section h2::after { /* Başlık altı çizgi */
     content: '';
@@ -254,7 +257,8 @@ section h2::after { /* Başlık altı çizgi */
     max-width: 350px;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     border: 1px solid #eee;
-    text-align: left;
+    /* Hem başlık hem de görselleri ortalamak için */
+    text-align: center;
 }
 
 #featured-services .card:hover {
@@ -271,6 +275,11 @@ section h2::after { /* Başlık altı çizgi */
 #featured-services .card p {
     font-size: 1.05rem;
     color: #555;
+}
+#about-us-preview {
+    background-color: #EDF7EF;
+    padding: 80px 0;
+    border-radius: 10px;
 }
 
 /* Neden Bizi Tercih Etmelisiniz Bölümü */
@@ -505,33 +514,160 @@ footer {
     background: #3E2723; /* Daha koyu kahve */
     color: #f8f8f8;
     text-align: center;
-    padding: 30px 0; /* Üst ve alttan padding'i 40px'ten 30px'e düşürerek küçülttük */
+    padding: 30px 0;
     margin-top: 50px;
     border-top: 5px solid #8BC34A; /* Yeşil çizgi */
-    display: flex; /* İçeriği düzenlemek için flexbox kullan */
-    flex-direction: column; /* Öğeleri alt alta sırala (copyright ve sosyal medya) */
-    align-items: center; /* Yatayda ortala */
-    gap: 15px; /* Öğeler arasında boşluk bırak */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px; /* Alt bölümler arasında boşluk */
 }
 
-/* Sosyal Medya Linkleri İçin Yeni Düzenleme */
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Küçük ekranlarda sarmalamasını sağlar */
+    justify-content: space-around; /* Bölümleri eşit boşluklarla dağıt */
+    width: 90%;
+    max-width: 1200px;
+    gap: 30px; /* Bölümler arası boşluk */
+    text-align: left; /* Her bölümün içeriğini sola hizala */
+}
+
+.footer-section {
+    flex: 1; /* Eşit genişlik kaplamasını sağlar */
+    min-width: 200px; /* Bölümlerin minimum genişliği */
+    padding: 0 15px; /* İç boşluk */
+}
+
+.footer-section h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #8BC34A; /* Başlıklar için yeşil renk */
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    text-align: left; /* Başlıkları sola hizala */
+}
+
+.footer-section p,
+.footer-section ul {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #ccc;
+}
+
+.footer-section p i { /* İkonlar için */
+    margin-right: 10px;
+    color: #fff; /* İkon rengi */
+}
+
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #8BC34A; /* Hover rengi */
+    text-decoration: underline;
+}
+
+/* Navigasyon listesi */
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav ul li {
+    margin-bottom: 10px;
+}
+
+/* Sosyal Medya Linkleri */
+.footer-social h3 {
+    text-align: left; /* Sosyal medya başlığını sola hizala */
+}
+
 footer .social-links {
-    display: flex; /* İkonları yan yana hizalamak için flexbox kullan */
-    justify-content: center; /* İkonları yatayda ortala */
-    align-items: center; /* İkonları dikeyde ortala */
-    margin-top: 0; /* Boşluğu kaldır, gap zaten var */
+    display: flex;
+    justify-content: flex-start; /* Sosyal ikonları sola hizala */
+    align-items: center;
+    margin-top: 10px; /* Başlıkla ikonlar arasına boşluk */
 }
 
 footer .social-links img {
-    width: 30px; /* İkon boyutunu biraz küçülttük (35px'ten 30px'e) */
-    height: 30px; /* İkon boyutunu biraz küçülttük */
-    margin: 0 10px; /* İkonlar arası boşluğu biraz azalttık (12px'ten 10px'e) */
-    filter: invert(100%); /* İkonları beyaza çevir */
+    width: 30px;
+    height: 30px;
+    margin-right: 15px; /* İkonlar arası boşluk */
+    filter: invert(100%);
     transition: transform 0.3s ease;
 }
 
 footer .social-links img:hover {
     transform: scale(1.15);
+}
+
+/* Telif Hakkı Bilgisi */
+.footer-bottom {
+    width: 100%;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Üst çizgi */
+    text-align: center;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+
+/* Duyarlılık (Responsive Tasarım) - Footer Ayarlamaları */
+
+/* 992px ve altındaki ekranlar */
+@media (max-width: 992px) {
+    .footer-content {
+        flex-direction: column; /* Bölümleri alt alta sırala */
+        align-items: center; /* Yatayda ortala */
+        text-align: center; /* İçerikleri de ortala */
+    }
+
+    .footer-section {
+        margin-bottom: 30px; /* Her bölüm arasına boşluk */
+        width: 100%; /* Tam genişlik kapla */
+        min-width: unset; /* Minimum genişliği kaldır */
+        padding: 0; /* İç dolguyu kaldır */
+    }
+
+    .footer-section h3 {
+        text-align: center; /* Başlıkları ortala */
+    }
+
+    .footer-social h3,
+    .footer-social .social-links {
+        justify-content: center; /* Sosyal ikonları ve başlığı ortala */
+        text-align: center; /* Sosyal ikon başlığını ortala */
+    }
+}
+
+/* 576px ve altındaki ekranlar */
+@media (max-width: 576px) {
+    footer {
+        padding: 20px 0;
+    }
+    .footer-section {
+        margin-bottom: 20px;
+    }
+    .footer-section h3 {
+        font-size: 1.2rem;
+    }
+    .footer-section p,
+    .footer-section ul {
+        font-size: 0.9rem;
+    }
+    footer .social-links img {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+    }
+    .footer-bottom {
+        font-size: 0.8rem;
+    }
 }
 
 /* Duyarlılık (Responsive Tasarım) */
