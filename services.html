@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZqiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -71,28 +71,7 @@
         </div>
     </footer>
 
-    <script>
-        // JavaScript for Hamburger Menu
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuButton = document.getElementById('mobile-menu');
-            const mainNav = document.getElementById('main-nav');
-
-            if (mobileMenuButton && mainNav) {
-                mobileMenuButton.addEventListener('click', function() {
-                    mainNav.classList.toggle('active');
-                    // Change icon based on menu state
-                    const icon = mobileMenuButton.querySelector('i');
-                    if (mainNav.classList.contains('active')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times'); // 'x' icon
-                    } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars'); // Hamburger icon
-                    }
-                });
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
