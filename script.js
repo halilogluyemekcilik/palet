@@ -30,3 +30,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+var gallery = new SimpleLightbox('.lightbox-gallery-item a');
