@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Googlebot Image ve diğer botlar için izinler
+User-agent: Googlebot-Image
+Allow: /images/
+
+User-agent: GPTBot
+Allow: /
+
+# AI Botlarının siteyi okumasına izin vermek SEO ve AI aramaları için iyidir
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap
+Sitemap: https://yusufyesildalambalaj.com.tr/sitemap.xml
